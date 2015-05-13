@@ -72,7 +72,7 @@ public class ConsulDiscovery implements DiscoveryProvider {
                     if (LOG.isLoggable(Level.FINEST)) {
                         LOG.log(Level.FINEST, "Found service at: {0}", s.getAddress());
                     }
-                    Address address = new Address(s.getAddress(), 5901);
+                    Address address = new Address(s.getAddress(), s.getServicePort());
                     list.add(new SimpleDiscoveredNode(address, empty));
                 }
 
