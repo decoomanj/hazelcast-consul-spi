@@ -26,6 +26,6 @@ It is important to know that you must register you Hazelcast service in Consul a
 
 # Authors
 - Jan De Cooman
--  Quan Weng
+- Guiquan Weng
 
 Thanks to Christoph Engelbert from Hazelcast for the support.
