@@ -2,19 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hazelcast</groupId>
+    <groupId>com.braindrainpain</groupId>
     <artifactId>hazelcast-consul</artifactId>
     <version>0.0.2</version>
     <packaging>jar</packaging>
 
-    <parent>
-        <groupId>com.hazelcast</groupId>
-        <artifactId>hazelcast-root</artifactId>
-        <version>3.5-SNAPSHOT</version>
-    </parent>
-    
     <name>hazelcast-consul</name>
-    <url>https://github.com/decooman/hazelcast-consul</url>
+    <url>https://github.com/decooman/hazelcast-consul-spi</url>
 
     <developers>
         <developer>
@@ -47,19 +41,18 @@
         </repository>   
     </repositories>
  
-
     <dependencies>
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
-            <version>${project.parent.version}</version>
+            <version>3.5-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
             <scope>test</scope>
-            <version>${project.parent.version}</version>
+            <version>3.5-SNAPSHOT</version>
             <classifier>tests</classifier>
         </dependency>
         <dependency>
@@ -81,38 +74,6 @@
                 </configuration>
             </plugin>
             
-            
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>${maven.bundle.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>bundle-manifest</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>manifest</goal>
-                        </goals>
-                        <configuration>
-                            <instructions>
-                                <Export-Package>
-                                    com.hazelcast.*
-                                </Export-Package>
-                                <Import-Package>
-                                    !org.junit,
-                                    !com.hazelcast.*,
-                                    org.apache.log4j;resolution:=optional,
-                                    org.apache.log4j.*;resolution:=optional,
-                                    org.slf4j;resolution:=optional,
-                                    *
-                                </Import-Package>
-                                <Fragment-Host>com.hazelcast</Fragment-Host>
-                            </instructions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -126,7 +87,7 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>                        
                     </archive>
                 </configuration>
             </plugin>

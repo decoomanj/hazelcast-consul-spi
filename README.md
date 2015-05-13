@@ -11,7 +11,7 @@ In order to get this plugin running, you must place the JAR on the classpath alo
     </multicast>
 
     <discovery-providers>
-        <discovery-provider class="com.hazelcast.consul.ConsulDiscovery" enabled="true">
+        <discovery-provider class="com.braindrainpain.hazelcast.consul.ConsulDiscovery" enabled="true">
           <properties>
               <property name ="host">consul</property>
               <property name ="port">8500</property>
@@ -22,7 +22,7 @@ In order to get this plugin running, you must place the JAR on the classpath alo
 </join>
 ```
         
-It is important to know that you must register you Hazelcast service in Consul along with the appropriate port (e.g. 5901). The ConsulDiscovery will read all IPs from this service together with their ports!
+It is important to know that you must register you Hazelcast service in Consul along with the appropriate port (e.g. 5701). The ConsulDiscovery will read all IPs from this service together with their ports!
 
 # Authors
 - Jan De Cooman

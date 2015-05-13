@@ -1,7 +1,7 @@
 /*
 * Author: Jan De Cooman
 */
-package com.hazelcast.consul;
+package com.braindrainpain.hazelcast.consul;
 
 import com.hazelcast.config.properties.PropertyDefinition;
 import com.hazelcast.config.properties.PropertyTypeConverter;

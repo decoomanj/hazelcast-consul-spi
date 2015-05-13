@@ -1,7 +1,7 @@
 /**
  * Author: Jan De Cooman
  */
-package com.hazelcast.consul;
+package com.braindrainpain.hazelcast.consul;
 
 import com.hazelcast.nio.Address;
 import com.hazelcast.spi.discovery.DiscoveredNode;
