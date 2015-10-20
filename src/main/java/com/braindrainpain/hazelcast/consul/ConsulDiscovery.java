@@ -4,10 +4,9 @@
 package com.braindrainpain.hazelcast.consul;
 
 import com.hazelcast.nio.Address;
-import com.hazelcast.spi.discovery.DiscoveredNode;
-import com.hazelcast.spi.discovery.DiscoveryMode;
-import com.hazelcast.spi.discovery.DiscoveryProvider;
-import com.hazelcast.spi.discovery.SimpleDiscoveredNode;
+import com.hazelcast.spi.discovery.DiscoveryNode;
+import com.hazelcast.spi.discovery.DiscoveryStrategy;
+import com.hazelcast.spi.discovery.SimpleDiscoveryNode;
 import com.hazelcast.util.ExceptionUtil;
 import com.orbitz.consul.CatalogClient;
 import com.orbitz.consul.Consul;
@@ -18,11 +17,10 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ConsulDiscovery implements DiscoveryProvider {
+public class ConsulDiscovery implements DiscoveryStrategy {
 
     private static final Logger LOG = Logger.getLogger(ConsulDiscovery.class.getName());
 
@@ -45,22 +43,18 @@ public class ConsulDiscovery implements DiscoveryProvider {
 
     /**
      * Open connection to consul.
-     * 
-     * @param discoveryMode 
      */
     @Override
-    public void start(DiscoveryMode discoveryMode) {
+    public void start() {
         this.agentClient = Consul.
                 newClient(consulHost, consulPort).
                 catalogClient();
     }
 
     @Override
-    public Collection<DiscoveredNode> discoverNodes() {
+    public Collection<DiscoveryNode> discoverNodes() {
 
-        Collection<DiscoveredNode> list = new LinkedList<>();
-        Properties empty = new Properties();
-
+        Collection<DiscoveryNode> list = new LinkedList<>();
         if (this.agentClient != null) {
             try {
 
@@ -73,7 +67,7 @@ public class ConsulDiscovery implements DiscoveryProvider {
                         LOG.log(Level.FINEST, "Found service at: {0}", s.getAddress());
                     }
                     Address address = new Address(s.getAddress(), s.getServicePort());
-                    list.add(new SimpleDiscoveredNode(address, empty));
+                    list.add(new SimpleDiscoveryNode(address));
                 }
 
                 if (list.isEmpty()) {
