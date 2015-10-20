@@ -45,14 +45,14 @@
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
-            <version>3.5-SNAPSHOT</version>
+            <version>3.6-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
             <scope>test</scope>
-            <version>3.5-SNAPSHOT</version>
+            <version>3.6-SNAPSHOT</version>
             <classifier>tests</classifier>
         </dependency>
         <dependency>
